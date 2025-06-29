@@ -6,12 +6,12 @@
     <title>File Uploader</title>
   </head>
   <body>
-    <form action="/upload" method="post">
+    <form action="/upload" method="post" enctype="multipart/form-data">
       <label for="file">Upload File:</label>
       <input
         type="file"
         id="file"
-        name="file"
+        name="uploaded-file"
         accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       />
       <button type="submit">Submit</button>
