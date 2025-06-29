@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Uploader</title>
+  </head>
+  <body>
+    <form action="/upload" method="post">
+      <label for="file">Upload File:</label>
+      <input
+        type="file"
+        id="file"
+        name="file"
+        accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
