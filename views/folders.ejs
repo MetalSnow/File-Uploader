@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Uploader</title>
+  </head>
+  <body>
+    <h2>🗂️Folders</h2>
+    <form action="/folders" method="post">
+      <label for="name">New folder:</label>
+      <input
+        type="text"
+        id="name"
+        name="folderName"
+        placeholder="Folder Name"
+      />
+      <button type="submit">Add➕</button>
+    </form>
+    <div class="folders"></div>
+  </body>
+</html>

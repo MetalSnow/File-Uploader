@@ -8,6 +8,7 @@ const errorMiddleware = require('./middleware/errorHandler');
 const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const fileRouter = require('./routes/fileRouter');
+const folderRouter = require('./routes/folderRouter');
 require('dotenv').config();
 
 const app = express();
@@ -41,6 +42,7 @@ app.use(passport.session());
 
 app.use(indexRouter);
 app.use(authRouter);
+app.use(folderRouter);
 app.use(fileRouter);
 
 app.use(errorMiddleware);

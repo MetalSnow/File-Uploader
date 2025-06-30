@@ -31,12 +31,16 @@ const validateUser = [
   body('password')
     .isLength({ min: 5 })
     .withMessage('Password must be minimum 5 characters.'),
-  body('confirmedPassword')
+  body('confirmPassword')
     .custom((value, { req }) => {
       return value === req.body.password;
     })
     .withMessage('Confirmed password does not match.'),
 ];
+
+const getSignUpPage = asyncHandler((req, res) => {
+  res.render('sign-up');
+});
 
 const signupUser = [
   validateUser,
@@ -44,11 +48,12 @@ const signupUser = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).render('index', {
-        errors: errors.array,
-        // userInfo: req.body,
+        errors: errors.array(),
+        userInfo: req.body,
       });
     }
-    const hashedPassword = bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
     await prisma.user.create({
       data: {
         username: req.body.username,
@@ -61,4 +66,4 @@ const signupUser = [
   }),
 ];
 
-module.exports = { signupUser };
+module.exports = { signupUser, getSignUpPage };
