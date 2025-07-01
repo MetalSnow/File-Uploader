@@ -18,6 +18,20 @@
       />
       <button type="submit">Add➕</button>
     </form>
-    <div class="folders"></div>
+    <div class="folders">
+      <% if(locals.folders) {%>
+      <p>
+        <span><%= folders.length %></span> <%= folders.length === 1 ? "Folder" :
+        "Folders"%>
+      </p>
+      <ul>
+        <%folders.forEach((folder)=>{%>
+        <li><a href=""><%= folder.name %></a></li>
+        <% })%>
+      </ul>
+      <% }else{ %>
+      <p><span>0</span> Folders</p>
+      <% } %>
+    </div>
   </body>
 </html>

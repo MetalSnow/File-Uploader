@@ -1,13 +1,12 @@
 const { Router } = require('express');
 const {
-  getfoldersPage,
   createFolder,
+  getAllFolders,
 } = require('../controllers/folderController');
 
 const folderRouter = new Router();
 
-folderRouter.get('/folders', getfoldersPage);
-
+folderRouter.get('/folders', getAllFolders);
 folderRouter.post('/folders', createFolder);
 
 module.exports = folderRouter;

@@ -3,18 +3,19 @@ const { PrismaClient } = require('../generated/prisma');
 
 const prisma = new PrismaClient();
 
-const getfoldersPage = asyncHandler((req, res) => {
-  res.render('folders');
+const getAllFolders = asyncHandler(async (req, res) => {
+  const folders = await prisma.folder.findMany();
+  res.render('folders', { folders: folders });
 });
 
 const createFolder = asyncHandler(async (req, res) => {
   await prisma.folder.create({
     data: {
       name: req.body.folderName,
-      userId: req.user.id,
+      userId: 1,
     },
   });
   res.redirect('/folders');
 });
 
-module.exports = { getfoldersPage, createFolder };
+module.exports = { createFolder, getAllFolders };
