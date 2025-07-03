@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Uploader</title>
+    <script src="main.js" defer></script>
   </head>
   <body>
     <h2>🗂️Folders</h2>
@@ -26,7 +27,27 @@
       </p>
       <ul>
         <%folders.forEach((folder)=>{%>
-        <li><a href=""><%= folder.name %></a></li>
+        <li class="list">
+          <a href=""><%= folder.name %></a>
+          <form
+            action="/folders/<%= folder.id %>"
+            method="post"
+            id="updateForm"
+            style="display: none"
+          >
+            <input type="hidden" name="_method" value="PATCH" />
+            <input
+              type="text"
+              id="newName"
+              name="newName"
+              placeholder="Folder Name"
+              required
+            />
+            <button type="submit" id="save">Save</button>
+            <button id="cancel" type="button">Cancel</button>
+          </form>
+          <button id="update">Edit</button>
+        </li>
         <% })%>
       </ul>
       <% }else{ %>

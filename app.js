@@ -9,6 +9,7 @@ const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const fileRouter = require('./routes/fileRouter');
 const folderRouter = require('./routes/folderRouter');
+const methodOverride = require('./middleware/methodOverride');
 require('dotenv').config();
 
 const app = express();
@@ -39,6 +40,9 @@ app.use(
 );
 
 app.use(passport.session());
+
+// Method override middleware
+app.use(methodOverride);
 
 app.use(indexRouter);
 app.use(authRouter);
