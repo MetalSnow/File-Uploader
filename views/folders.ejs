@@ -47,6 +47,10 @@
             <button id="cancel" type="button">Cancel</button>
           </form>
           <button id="update">Edit</button>
+          <form action="/folders/<%= folder.id %>" method="post">
+            <input type="hidden" name="_method" value="delete" />
+            <button type="submit">❌</button>
+          </form>
         </li>
         <% })%>
       </ul>

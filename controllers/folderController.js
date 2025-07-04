@@ -34,4 +34,13 @@ const updateFolder = asyncHandler(async (req, res) => {
   res.redirect('/folders');
 });
 
-module.exports = { createFolder, getAllFolders, updateFolder };
+const deleteFolder = asyncHandler(async (req, res) => {
+  await prisma.folder.delete({
+    where: {
+      id: Number(req.params.id),
+    },
+  });
+  res.redirect('/folders');
+});
+
+module.exports = { createFolder, getAllFolders, updateFolder, deleteFolder };
