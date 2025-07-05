@@ -3,13 +3,15 @@ const path = require('node:path');
 const session = require('express-session');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('./generated/prisma');
-const passport = require('passport');
+const passport = require('./config/passport');
 const errorMiddleware = require('./middleware/errorHandler');
 const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const fileRouter = require('./routes/fileRouter');
 const folderRouter = require('./routes/folderRouter');
 const methodOverride = require('./middleware/methodOverride');
+const flash = require('connect-flash');
+const authContext = require('./middleware/authContext');
 require('dotenv').config();
 
 const app = express();
@@ -21,6 +23,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(assetsPath));
+
+app.use(flash());
 
 app.use(
   session({
@@ -40,6 +44,8 @@ app.use(
 );
 
 app.use(passport.session());
+
+app.use(authContext);
 
 // Method override middleware
 app.use(methodOverride);

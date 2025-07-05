@@ -41,6 +41,9 @@ const validateUser = [
 const getSignUpPage = asyncHandler((req, res) => {
   res.render('sign-up');
 });
+const getLoginPage = asyncHandler((req, res) => {
+  res.render('log-in');
+});
 
 const signupUser = [
   validateUser,
@@ -66,4 +69,13 @@ const signupUser = [
   }),
 ];
 
-module.exports = { signupUser, getSignUpPage };
+const logoutUser = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+};
+
+module.exports = { signupUser, getSignUpPage, getLoginPage, logoutUser };

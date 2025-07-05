@@ -7,9 +7,14 @@
   </head>
   <body>
     <div>
+      <% if(locals.currentUser){ %>
+      <h2>Welcome <%=currentUser.username %></h2>
+      <a href="/folders">folders</a>
+      <a href="/log-out">Log Out</a>
+      <% }else {%>
       <a href="/sign-up">Sign Up</a>
       <p>Already have an account? <a href="/log-in">Log in</a></p>
+      <% } %>
     </div>
-    <a href="/folders">folders</a>
   </body>
 </html>
