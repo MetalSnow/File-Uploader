@@ -28,7 +28,7 @@
       <ul>
         <%folders.forEach((folder)=>{%>
         <li class="list">
-          <a href=""><%= folder.name %></a>
+          <a href="/file-upload/<%= folder.id %>"><%= folder.name %></a>
           <form
             action="/folders/<%= folder.id %>"
             method="post"
