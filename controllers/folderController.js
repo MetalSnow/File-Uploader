@@ -5,6 +5,9 @@ const prisma = new PrismaClient();
 
 const getAllFolders = asyncHandler(async (req, res) => {
   const folders = await prisma.folder.findMany({
+    where: {
+      userId: req.user.id,
+    },
     orderBy: {
       id: 'asc',
     },
@@ -16,7 +19,7 @@ const createFolder = asyncHandler(async (req, res) => {
   await prisma.folder.create({
     data: {
       name: req.body.folderName,
-      userId: 1,
+      userId: req.user.id,
     },
   });
   res.redirect('/folders');
