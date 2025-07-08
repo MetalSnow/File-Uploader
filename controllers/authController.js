@@ -48,9 +48,10 @@ const getLoginPage = asyncHandler((req, res) => {
 const signupUser = [
   validateUser,
   asyncHandler(async (req, res) => {
+    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render('index', {
+      return res.status(400).render('sign-up', {
         errors: errors.array(),
         userInfo: req.body,
       });

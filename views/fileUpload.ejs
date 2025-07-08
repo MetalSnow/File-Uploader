@@ -16,6 +16,27 @@
       <input type="file" id="file" name="uploaded-file" />
       <button type="submit">Submit</button>
     </form>
-    <div class="files"></div>
+    <div class="files">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">File Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Upload Time</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% files.forEach((file) => { %>
+          <tr>
+            <th scope="row"><%= file.name %></th>
+            <td><%= file.size %></td>
+            <td><%= file.uploadTime %></td>
+            <td><a href="<%= file.url %>">Download⬇️</a></td>
+          </tr>
+          <%}); %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
