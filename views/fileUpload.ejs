@@ -25,6 +25,7 @@
             <th scope="col">Size</th>
             <th scope="col">Upload Time</th>
             <th scope="col">Download</th>
+            <th scope="col">remove</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,14 @@
             <td><%= file.size %></td>
             <td><%= file.uploadTime %></td>
             <td><a href="<%= file.url %>">Download⬇️</a></td>
+            <td>
+              <form action="/delete/<%= file.id %>" method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <input type="hidden" name="fileName" value="<%= file.name %>" />
+                <input type="hidden" name="folderId" value="<%= locals.id %>" />
+                <button type="submit">❌</button>
+              </form>
+            </td>
           </tr>
           <%}); %>
         </tbody>

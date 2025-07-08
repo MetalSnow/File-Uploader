@@ -24,7 +24,7 @@ const createFile = asyncHandler(async (req, res, next) => {
     return res.status(400).send('No file uploaded.');
   }
   const file = req.file;
-  const filePath = `${req.params.id}/${file.originalname}`;
+  const filePath = `${req.user.id}/${file.originalname}`;
 
   const { data, error } = await supabase.storage
     .from('files')
@@ -49,4 +49,17 @@ const createFile = asyncHandler(async (req, res, next) => {
   res.redirect(`/file-upload/${req.params.id}`);
 });
 
-module.exports = { getFilesPage, createFile };
+const deleteFile = asyncHandler(async (req, res) => {
+  await supabase.storage
+    .from('files')
+    .remove([`${req.user.id}/${req.body.fileName}`]);
+
+  await prisma.file.delete({
+    where: {
+      id: Number(req.params.id),
+    },
+  });
+  res.redirect(`/file-upload/${req.body.folderId}`);
+});
+
+module.exports = { getFilesPage, createFile, deleteFile };
