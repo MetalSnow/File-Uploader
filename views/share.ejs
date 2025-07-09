@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Uploader</title>
+  </head>
+  <body>
+    <h2>Share Folder ⌯⌲</h2>
+    <form action="/share/<%= locals.id %>" method="post">
+      <label for="expiration">Expiration Date:</label>
+      <input
+        type="date"
+        name="expiration"
+        id="expiration"
+        min="2025-01-01"
+        max="2026-01-01"
+      />
+      <button type="submit">Generate Link</button>
+    </form>
+    <div>
+      <% if(locals.uuid){ %>
+      <a href="/share/<%= locals.id %>/<%= locals.uuid %>"
+        >http://localhost:3000/share/<%= locals.id %>/<%= locals.uuid %></a
+      >
+      <% } %>
+    </div>
+  </body>
+</html>
