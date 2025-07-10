@@ -1,0 +1,14 @@
+<aside class="left-sidebar">
+  <h1>📤File Uploader</h1>
+
+  <ul>
+    <% if(locals.currentUser){ %>
+    <li><a href="/folders">🗂️folders</a></li>
+    <li><a href="/log-out">👋Log Out</a></li>
+    <% } else{%>
+    <li><a href="/log-in">👤Log In</a></li>
+    <li><a href="/sign-up">✍️Sign Up</a></li>
+    <% } %>
+    <li><a href="#">💡About</a></li>
+  </ul>
+</aside>

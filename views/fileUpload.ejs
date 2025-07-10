@@ -3,50 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
     <title>File Uploader</title>
   </head>
   <body>
-    <a href="/folders">↩ Go back</a>
-    <h2>📑Files</h2>
-    <form
-      action="/upload/<%= locals.id %>"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <label for="file">Upload File:</label>
-      <input type="file" id="file" name="uploaded-file" />
-      <button type="submit">Submit</button>
-    </form>
-    <div class="files">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">File Name</th>
-            <th scope="col">Size</th>
-            <th scope="col">Upload Time</th>
-            <th scope="col">Download</th>
-            <th scope="col">remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% files.forEach((file) => { %>
-          <tr>
-            <th scope="row"><%= file.name %></th>
-            <td><%= file.size %></td>
-            <td><%= file.uploadTime %></td>
-            <td><a href="<%= file.url %>">Download⬇️</a></td>
-            <td>
-              <form action="/delete/<%= file.id %>" method="post">
-                <input type="hidden" name="_method" value="delete" />
-                <input type="hidden" name="fileName" value="<%= file.name %>" />
-                <input type="hidden" name="folderId" value="<%= locals.id %>" />
-                <button type="submit">❌</button>
-              </form>
-            </td>
-          </tr>
-          <%}); %>
-        </tbody>
-      </table>
-    </div>
+    <%- include('partials/leftAside.ejs') %>
+    <main>
+      <a href="/folders">↩ Go back</a>
+      <h2>📑Files</h2>
+      <form
+        action="/upload/<%= locals.id %>"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="uploaded-file" />
+        <button type="submit">Submit</button>
+      </form>
+      <div class="files">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">File Name</th>
+              <th scope="col">Size</th>
+              <th scope="col">Upload Time</th>
+              <th scope="col">Download</th>
+              <th scope="col">remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% files.forEach((file) => { %>
+            <tr>
+              <th scope="row"><%= file.name %></th>
+              <td><%= file.size %></td>
+              <td><%= file.uploadTime %></td>
+              <td><a href="<%= file.url %>">Download⬇️</a></td>
+              <td>
+                <form action="/delete/<%= file.id %>" method="post">
+                  <input type="hidden" name="_method" value="delete" />
+                  <input
+                    type="hidden"
+                    name="fileName"
+                    value="<%= file.name %>"
+                  />
+                  <input
+                    type="hidden"
+                    name="folderId"
+                    value="<%= locals.id %>"
+                  />
+                  <button type="submit">❌</button>
+                </form>
+              </td>
+            </tr>
+            <%}); %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <%- include('partials/rightAside.ejs') %>
   </body>
 </html>

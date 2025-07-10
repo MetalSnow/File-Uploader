@@ -3,17 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Drive</title>
+    <link rel="stylesheet" href="/style.css" />
+    <title>File Uploader</title>
   </head>
   <body>
-    <h2>register</h2>
-    <%- include('partials/flash.ejs') %>
-    <form action="/log-in" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-      <button type="submit">Log In</button>
-    </form>
+    <%- include('partials/leftAside.ejs') %>
+    <main>
+      <h2>register</h2>
+      <%- include('partials/flash.ejs') %>
+      <form action="/log-in" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Log In</button>
+      </form>
+    </main>
+    <%- include('partials/rightAside.ejs') %>
   </body>
 </html>

@@ -3,38 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Drive</title>
+    <link rel="stylesheet" href="/style.css" />
+    <title>File Uploader</title>
   </head>
   <body>
-    <h2>register</h2>
-    <%- include('partials/errors.ejs') %>
-    <form action="/sign-up" method="post">
-      <label for="username">Username:</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        required
-        value="<%= locals.userInfo?.username %>"
-      />
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        required
-        value="<%= locals.userInfo?.email %>"
-      />
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input
-        type="password"
-        id="confirmPassword"
-        name="confirmPassword"
-        required
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <%- include('partials/leftAside.ejs') %>
+    <main>
+      <h2>register</h2>
+      <%- include('partials/errors.ejs') %>
+      <form action="/sign-up" method="post">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          value="<%= locals.userInfo?.username %>"
+        />
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          value="<%= locals.userInfo?.email %>"
+        />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <label for="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <%- include('partials/rightAside.ejs') %>
   </body>
 </html>

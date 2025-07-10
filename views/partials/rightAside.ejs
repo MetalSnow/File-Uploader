@@ -1,0 +1,15 @@
+<aside class="right-sidebar">
+  <div>
+    <% if(locals.currentUser){ %>
+    <h4>Special Offer 🎁</h4>
+    <p>Get 20% off cloud storage today!</p>
+    <% }else {%>
+    <a href="/sign-up">Sign Up</a>
+    <p>Already have an account? <a href="/log-in">Log in</a></p>
+    <% } %>
+  </div>
+  <div class="credits">
+    Developed by MetalSnow |
+    <a href="https://github.com/MetalSnow" target="_blank">GitHub </a>
+  </div>
+</aside>
