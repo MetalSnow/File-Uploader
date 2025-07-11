@@ -8,14 +8,26 @@
   </head>
   <body>
     <%- include('partials/leftAside.ejs') %>
-    <main>
-      <h2>register</h2>
+    <main class="login-container">
+      <h2>Log In</h2>
       <%- include('partials/flash.ejs') %>
       <form action="/log-in" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Enter your username"
+        />
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Enter your password"
+        />
         <button type="submit">Log In</button>
       </form>
     </main>

@@ -9,30 +9,28 @@
   </head>
   <body>
     <%- include('partials/leftAside.ejs') %>
-    <main>
-      <a href="/">↩ Home</a>
+    <main class="folders-container">
       <h2>🗂️Folders</h2>
       <form action="/folders" method="post">
-        <label for="name">New folder:</label>
         <input
           type="text"
           id="name"
           name="folderName"
-          placeholder="Folder Name"
+          placeholder="Enter folder name"
           required
         />
-        <button type="submit">Add➕</button>
+        <button type="submit">➕</button>
       </form>
       <div class="folders">
         <% if(locals.folders) {%>
         <p>
-          <span><%= folders.length %></span> <%= folders.length === 1 ? "Folder"
-          : "Folders"%>
+          <span>#<%= folders.length %></span> <%= folders.length === 1 ?
+          "Folder" : "Folders"%>
         </p>
         <ul>
           <%folders.forEach((folder)=>{%>
           <li class="list">
-            <a href="/file-upload/<%= folder.id %>"><%= folder.name %></a>
+            <a href="/file-upload/<%= folder.id %>"><%= folder.name %> </a>
             <form
               action="/folders/<%= folder.id %>"
               method="post"
@@ -51,16 +49,25 @@
               <button id="cancel" type="button">Cancel</button>
             </form>
             <button id="update">Edit</button>
-            <form action="/folders/<%= folder.id %>" method="post">
+
+            <form
+              action="/folders/<%= folder.id %>"
+              method="post"
+              class="delete-form"
+            >
               <input type="hidden" name="_method" value="delete" />
-              <button type="submit">❌</button>
+              <button type="submit">
+                <img src="/icons/delete.png" alt="delete-icon" />
+              </button>
             </form>
-            <a href="/share/<%= folder.id %>">Share⌯⌲</a>
+            <a class="anchor-share" href="/share/<%= folder.id %>"
+              >Share<img src="/icons/share.png" alt="share-icon"
+            /></a>
           </li>
           <% })%>
         </ul>
         <% }else{ %>
-        <p><span>0</span> Folders</p>
+        <p><span>#0</span> Folders</p>
         <% } %>
       </div>
     </main>

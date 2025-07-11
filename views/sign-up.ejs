@@ -8,7 +8,7 @@
   </head>
   <body>
     <%- include('partials/leftAside.ejs') %>
-    <main>
+    <main class="signup-container">
       <h2>register</h2>
       <%- include('partials/errors.ejs') %>
       <form action="/sign-up" method="post">
@@ -19,6 +19,7 @@
           name="username"
           required
           value="<%= locals.userInfo?.username %>"
+          placeholder="Choose a username"
         />
         <label for="email">Email:</label>
         <input
@@ -27,17 +28,25 @@
           id="email"
           required
           value="<%= locals.userInfo?.email %>"
+          placeholder="yourname@example.com"
         />
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Password (min. 5 characters)"
+        />
         <label for="confirmPassword">Confirm Password:</label>
         <input
           type="password"
           id="confirmPassword"
           name="confirmPassword"
           required
+          placeholder="Confirm password"
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Sign Up</button>
       </form>
     </main>
     <%- include('partials/rightAside.ejs') %>
