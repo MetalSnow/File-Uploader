@@ -17,3 +17,15 @@ document.querySelectorAll('.list').forEach((element) => {
     updateBtn.style.display = 'inline-block';
   });
 });
+
+// Display input file uploaded name
+const fileInput = document.querySelector('#file-upload');
+const spanEl = document.querySelector('span');
+const fileIcon = document.querySelector('.file-icon');
+
+fileInput.addEventListener('change', () => {
+  const fileName = fileInput.value.split('\\').splice(-1, 1).join('');
+  spanEl.textContent = fileName;
+  spanEl.style.color = '#0084d1';
+  fileIcon.src = '/icons/file-2.png';
+});

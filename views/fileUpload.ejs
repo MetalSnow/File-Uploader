@@ -4,21 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css" />
+    <script src="/main.js" defer></script>
     <title>File Uploader</title>
   </head>
   <body>
     <%- include('partials/leftAside.ejs') %>
-    <main>
-      <a href="/folders">↩ Go back</a>
+    <main class="files-container">
       <h2>📑Files</h2>
       <form
         action="/upload/<%= locals.id %>"
         method="post"
         enctype="multipart/form-data"
       >
-        <label for="file">Upload File:</label>
-        <input type="file" id="file" name="uploaded-file" />
-        <button type="submit">Submit</button>
+        <label for="file-upload" class="custom-file-upload"
+          ><img
+            src="/icons/file-1.png"
+            class="file-icon"
+            alt="file-upload-icon"
+          /><span>Upload File</span></label
+        >
+        <input type="file" id="file-upload" name="uploaded-file" />
+        <button type="submit">Submit file</button>
       </form>
       <div class="files">
         <table>
@@ -35,11 +41,18 @@
             <% files.forEach((file) => { %>
             <tr>
               <th scope="row"><%= file.name %></th>
-              <td><%= file.size %></td>
-              <td><%= file.uploadTime %></td>
+              <td><%= (file.size / 1000).toFixed(2) %>KB</td>
+              <td>
+                <%= file.uploadTime.toString().split(' ').slice(0, 5).join(' ')
+                %>
+              </td>
               <td><a href="<%= file.url %>">Download⬇️</a></td>
               <td>
-                <form action="/delete/<%= file.id %>" method="post">
+                <form
+                  action="/delete/<%= file.id %>"
+                  method="post"
+                  class="delete-form"
+                >
                   <input type="hidden" name="_method" value="delete" />
                   <input
                     type="hidden"
@@ -51,7 +64,9 @@
                     name="folderId"
                     value="<%= locals.id %>"
                   />
-                  <button type="submit">❌</button>
+                  <button type="submit">
+                    <img src="/icons/delete.svg" alt="" />
+                  </button>
                 </form>
               </td>
             </tr>
