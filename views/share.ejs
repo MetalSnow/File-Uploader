@@ -8,7 +8,7 @@
   </head>
   <body>
     <%- include('partials/leftAside.ejs') %>
-    <main>
+    <main class="share-container">
       <h2>Share Folder ⌯⌲</h2>
       <form action="/share/<%= locals.id %>" method="post">
         <label for="expiration">Expiration Date:</label>
@@ -18,11 +18,12 @@
           id="expiration"
           min="2025-01-01"
           max="2026-01-01"
+          required
         />
-        <button type="submit">Generate Link</button>
+        <button type="submit">Get link</button>
       </form>
       <div>
-        <% if(locals.uuid){ %> Generated link:
+        <% if(locals.uuid){ %>Link:
         <a href="/share/<%= locals.id %>/<%= locals.uuid %>">Visit Link</a>
         <% } %>
       </div>

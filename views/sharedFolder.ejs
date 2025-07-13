@@ -3,31 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
     <title>File Uploader</title>
   </head>
-  <body>
-    <h2>📌Folder Name: <%= folderData.name %></h2>
-    <div class="files">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">File Name</th>
-            <th scope="col">Size</th>
-            <th scope="col">Upload Time</th>
-            <th scope="col">Download</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% folderData.file.forEach((file) => { %>
-          <tr>
-            <th scope="row"><%= file.name %></th>
-            <td><%= file.size %></td>
-            <td><%= file.uploadTime %></td>
-            <td><a href="<%= file.url %>">Download⬇️</a></td>
-          </tr>
-          <%}); %>
-        </tbody>
-      </table>
-    </div>
+  <body class="shared-folder-body">
+    <main>
+      <h2>📌Folder Name: <%= folderData.name %></h2>
+      <div class="files">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">File Name</th>
+              <th scope="col">Size</th>
+              <th scope="col">Upload Time</th>
+              <th scope="col">Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% folderData.file.forEach((file) => { %>
+            <tr>
+              <th scope="row"><%= file.name %></th>
+              <td><%= (file.size / 1000).toFixed(2) %>KB</td>
+              <td>
+                <%= file.uploadTime.toString().split(' ').slice(0, 5).join(' ')
+                %>
+              </td>
+              <td><a href="<%= file.url %>">Download⬇️</a></td>
+            </tr>
+            <%}); %>
+          </tbody>
+        </table>
+      </div>
+    </main>
   </body>
 </html>

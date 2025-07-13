@@ -360,4 +360,99 @@ body {
       }
     }
   }
+
+  & .share-container {
+    text-align: center;
+    justify-self: center;
+    min-width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & form {
+      width: 100%;
+    }
+
+    & div {
+      background-color: #0084d1;
+      padding: 2rem;
+      border-radius: 6px;
+      color: white;
+      font-weight: 600;
+
+      & a {
+        color: #ffffb8;
+
+        &:hover {
+          color: #ffff2c;
+        }
+      }
+    }
+  }
+}
+
+.shared-folder-body {
+  display: block;
+  & main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    & .files {
+      padding: 20px;
+      text-align: center;
+
+      & table {
+        border-collapse: collapse;
+        border-spacing: 30px;
+
+        & th {
+          overflow: hidden;
+          color: #29211a;
+        }
+
+        & tr {
+          border-bottom: 2px solid black;
+
+          &:hover {
+            background-color: #4816162b;
+          }
+        }
+
+        & th,
+        td {
+          padding: 2rem;
+        }
+
+        & a {
+          text-decoration: none;
+          font-weight: 800;
+          color: #0084d1;
+
+          &:hover {
+            color: #024267;
+          }
+        }
+
+        & .delete-form {
+          width: 90px;
+          & button {
+            background-color: #f4baba;
+            padding: 4px 0px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+              background-color: #64615e;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
 }
